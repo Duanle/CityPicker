@@ -286,12 +286,13 @@ public class CityPickerDialogFragment extends DialogFragment implements TextWatc
         mRecyclerView.scrollToPosition(0);
     }
 
-    private List<City> search(String name, List<City> list) {
+    private List<City> search(String keywords, List<City> list) {
         List<City> results = new ArrayList<>();
-        Pattern pattern = Pattern.compile(name, Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile(keywords, Pattern.CASE_INSENSITIVE);
         for (int i = 0; i < list.size(); i++) {
-            Matcher matcher = pattern.matcher((list.get(i)).getName());
-            if (matcher.find()) {
+            Matcher nameMatcher = pattern.matcher((list.get(i)).getName());
+            Matcher pinyinMatcher = pattern.matcher((list.get(i)).getPinyin());
+            if (nameMatcher.find() || pinyinMatcher.find()) {
                 results.add(list.get(i));
             }
         }
