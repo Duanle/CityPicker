@@ -120,6 +120,7 @@ public class CityPicker {
                 CityPickerDialogFragment.newInstance(enableAnim);
         cityPickerFragment.setLocatedCity(mLocation);
         cityPickerFragment.setHotCities(mHotCities);
+        cityPickerFragment.setCities(mCities);
         cityPickerFragment.setAnimationStyle(mAnimStyle);
         cityPickerFragment.setOnPickListener(mOnPickListener);
         cityPickerFragment.show(ft, TAG);
