@@ -62,8 +62,11 @@ public class CityListAdapter extends RecyclerView.Adapter<CityListAdapter.BaseVi
     }
 
     public void updateLocateState(LocatedCity location, int state){
-        mData.remove(0);
-        mData.add(0, location);
+        if(mData != null){
+            mData.remove(0);
+            mData.add(0, location);
+        }
+
         stateChanged = !(locateState == state);
         locateState = state;
         refreshLocationItem();

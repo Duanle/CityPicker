@@ -74,6 +74,27 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                 recreate();
             }
         });
+        final List<City> cities = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            String pingyin = "A";
+            if(i <10){
+                pingyin = "A";
+            }else
+            if(i <20){
+                pingyin = "B";
+            }else
+            if(i <30){
+                pingyin = "F";
+            }else
+            if(i <40){
+                pingyin = "H";
+            }else {
+                pingyin = "Z";
+
+            }
+            City city = new City("城市" + i,"省",pingyin,"" +i);
+            cities.add(city);
+        }
 
         findViewById(R.id.btn_pick).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                         .enableAnimation(enable)
                         .setAnimationStyle(anim)
                         .setLocatedCity(null)
+                        .setCities(cities)
                         .setHotCities(hotCities)
                         .setOnPickListener(new OnPickListener() {
                             @Override
