@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.zaaach.citypicker.adapter.OnPickListener;
+import com.zaaach.citypicker.model.City;
 import com.zaaach.citypicker.model.HotCity;
 import com.zaaach.citypicker.model.LocateState;
 import com.zaaach.citypicker.model.LocatedCity;
@@ -29,6 +30,7 @@ public class CityPicker {
     private int mAnimStyle;
     private LocatedCity mLocation;
     private List<HotCity> mHotCities;
+    private List<City> mCities;
     private OnPickListener mOnPickListener;
 
     private CityPicker(){}
@@ -78,6 +80,11 @@ public class CityPicker {
 
     public CityPicker setHotCities(List<HotCity> data){
         this.mHotCities = data;
+        return this;
+    }
+
+    public CityPicker setCities(List<City> data){
+        this.mCities = data;
         return this;
     }
 

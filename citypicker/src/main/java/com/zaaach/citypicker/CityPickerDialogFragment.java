@@ -5,12 +5,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StyleRes;
-import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -26,12 +20,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StyleRes;
+import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.zaaach.citypicker.adapter.CityListAdapter;
 import com.zaaach.citypicker.adapter.InnerListener;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.adapter.decoration.DividerItemDecoration;
 import com.zaaach.citypicker.adapter.decoration.SectionItemDecoration;
-import com.zaaach.citypicker.db.DBManager;
 import com.zaaach.citypicker.model.City;
 import com.zaaach.citypicker.model.HotCity;
 import com.zaaach.citypicker.model.LocateState;
@@ -59,11 +59,11 @@ public class CityPickerDialogFragment extends DialogFragment implements TextWatc
 
     private LinearLayoutManager mLayoutManager;
     private CityListAdapter mAdapter;
-    private List<City> mAllCities;
+    private List<City> mAllCities = new ArrayList<>();
     private List<HotCity> mHotCities;
     private List<City> mResults;
 
-    private DBManager dbManager;
+//    private DBManager dbManager;
 
     private int height;
     private int width;
@@ -100,6 +100,12 @@ public class CityPickerDialogFragment extends DialogFragment implements TextWatc
     public void setHotCities(List<HotCity> data){
         if (data != null && !data.isEmpty()){
             this.mHotCities = data;
+        }
+    }
+
+    public void setCities(List<City> data){
+        if (data != null && !data.isEmpty()){
+            this.mAllCities = data;
         }
     }
 
@@ -191,8 +197,8 @@ public class CityPickerDialogFragment extends DialogFragment implements TextWatc
             locateState = LocateState.SUCCESS;
         }
 
-        dbManager = new DBManager(getActivity());
-        mAllCities = dbManager.getAllCities();
+//        dbManager = new DBManager(getActivity());
+//        mAllCities = dbManager.getAllCities();
         mAllCities.add(0, mLocatedCity);
         mAllCities.add(1, new HotCity("热门城市", "未知", "0"));
         mResults = mAllCities;
@@ -259,7 +265,7 @@ public class CityPickerDialogFragment extends DialogFragment implements TextWatc
         }else {
             mClearAllBtn.setVisibility(View.VISIBLE);
             //开始数据库查找
-            mResults = dbManager.searchCity(keyword);
+//            mResults = dbManager.searchCity(keyword);
             ((SectionItemDecoration)(mRecyclerView.getItemDecorationAt(0))).setData(mResults);
             if (mResults == null || mResults.isEmpty()){
                 mEmptyView.setVisibility(View.VISIBLE);
