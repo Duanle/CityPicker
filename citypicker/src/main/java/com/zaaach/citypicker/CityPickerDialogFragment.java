@@ -288,7 +288,7 @@ public class CityPickerDialogFragment extends DialogFragment implements TextWatc
 
     private List<City> search(String name, List<City> list) {
         List<City> results = new ArrayList<>();
-        Pattern pattern = Pattern.compile(name);
+        Pattern pattern = Pattern.compile(name, Pattern.CASE_INSENSITIVE);
         for (int i = 0; i < list.size(); i++) {
             Matcher matcher = pattern.matcher((list.get(i)).getName());
             if (matcher.find()) {
