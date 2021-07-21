@@ -135,7 +135,9 @@ public class CityListAdapter extends RecyclerView.Adapter<CityListAdapter.BaseVi
                 @Override
                 public void onClick(View v) {
                     if (mInnerListener != null){
-                        mInnerListener.dismiss(pos, data);
+                        if(locateState != LocateState.LOCATING){
+                            mInnerListener.dismiss(pos, data);
+                        }
                     }
                 }
             });
