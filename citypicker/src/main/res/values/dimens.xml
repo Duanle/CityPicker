@@ -3,6 +3,7 @@
     <dimen name="cp_default_padding">16dp</dimen>
 
     <dimen name="cp_index_bar_width">36dp</dimen>
+    <dimen name="cp_index_bar_margin">100dp</dimen>
     <dimen name="cp_index_bar_text_size">13sp</dimen>
 
     <dimen name="cp_cancel_text_size">15sp</dimen>

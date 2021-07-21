@@ -31,6 +31,8 @@
         <com.zaaach.citypicker.view.SideIndexBar
             android:id="@+id/cp_side_index_bar"
             android:layout_width="@dimen/cp_index_bar_width"
+            android:layout_marginTop="@dimen/cp_index_bar_margin"
+            android:layout_marginBottom="@dimen/cp_index_bar_margin"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"/>
